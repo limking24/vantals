@@ -1,7 +1,8 @@
 import * as cheerio from 'cheerio';
 import fetch from 'node-fetch';
+import { Listing } from 'vantals-common/src/listing';
 import { flatten } from '../functional/array';
-import { FilterOption, Listing, ListingCollector, OnMultiFetch } from './listing-collector';
+import { FilterOption, ListingCollector, OnMultiFetch } from './listing-collector';
 
 const source = 'craigslist';
 const baseUrl = 'https://vancouver.craigslist.org';

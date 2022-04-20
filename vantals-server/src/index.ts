@@ -15,7 +15,7 @@ let collectors: ListingCollector[] = [new CraigslistCrawler(), new VanpeopleApi(
 
 app.use(function (req, res, next) {
 	res.setHeader('Access-Control-Allow-Origin', process.env.ALLOW_ORIGIN || '');
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST');
+	res.setHeader('Access-Control-Allow-Methods', 'GET, POST');
 	next();
 });
 
@@ -25,5 +25,5 @@ app.get('/listings', async (req: Request, res: Response) => {
 });
 
 app.listen(port, () => {
-  console.log(`⚡️[server]: Server is running at http://localhost:${port}`);
+	console.log(`⚡️[server]: Server is running at http://localhost:${port}`);
 });

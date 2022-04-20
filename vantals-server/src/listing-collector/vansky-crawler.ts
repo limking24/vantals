@@ -1,7 +1,8 @@
 import * as cheerio from 'cheerio';
 import fetch from 'node-fetch';
+import { Listing } from 'vantals-common/src/listing';
 import { flatten } from '../functional/array';
-import { ListingCollector, FilterOption, Listing, OnMultiFetch } from './listing-collector';
+import { FilterOption, ListingCollector, OnMultiFetch } from './listing-collector';
 
 const source = 'vansky';
 const baseUrl = 'https://www.vansky.com';
