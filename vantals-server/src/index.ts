@@ -21,7 +21,8 @@ app.use(function (req, res, next) {
 
 app.get('/listings', async (req: Request, res: Response) => {
 	let onFetch: OnMultiFetch = collectors.map(collector => collector.collect());
-	res.json(flatten(await Promise.all(onFetch)));
+	res.json(flatten(await Promise.all(onFetch))
+				.sort((a, b) => b.time.getTime() - a.time.getTime()));
 });
 
 app.listen(port, () => {
