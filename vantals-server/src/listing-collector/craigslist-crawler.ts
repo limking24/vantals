@@ -33,7 +33,7 @@ export class CraigslistCrawler implements ListingCollector {
 							let time = new Date($(li).find('.result-date').attr('datetime')!);
 							let description = $(li).find('.housing').text().trim();
 							let location = $(li).find('.result-hood').text().trim().slice(1, -1);
-							let price = $(li).find('.result-price').first().text().trim();
+							let price = $(li).find('.result-price').first().text().trim().substring(1);
 							return {title, photo, hyperlink, time, description, location, price, source};
 						});
 						return listings.toArray();
