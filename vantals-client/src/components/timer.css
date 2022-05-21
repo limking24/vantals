@@ -1,0 +1,95 @@
+.timer {
+	align-items: center;
+	background: rgba(83, 86, 94, 0.92);
+	border-radius: 0.5em;
+	bottom: 8px;
+	box-shadow: 0 0 0.3em rgba(0, 0, 0, 0.12);
+	color: #eae8e8;
+	display: flex;
+	font-size: 0.97em;
+	padding: 0.4em 0.6em;
+	position: fixed;
+	right: 7px;
+}
+
+.timer .remaining {
+	margin-right: 0.35em;
+}
+
+.timer img {
+	cursor: pointer;
+	margin-right: 1px;
+	margin-top: 1px;
+	width: clamp(16px, 1.8vw, 19px);
+}
+
+.timer img:hover {
+	filter: brightness(80%);
+}
+
+.timer .smaller {
+	margin-right: 2px;
+	margin-top: 1.5px;
+	width: clamp(15.2px, 1.8vw, 17.5px);
+}
+
+.timer .setting-container {
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.7);
+	transition: all 200ms;
+	opacity: 1;
+}
+
+.timer .setting-container.hidden {
+	transition: all 200ms;
+	opacity: 0;
+}
+
+.timer .setting-container .setting {
+	font-size: 1.15em;
+	background: #262a2e;
+	padding: 1.6em;
+	position: fixed;
+	left: 50%;
+	border-radius: 0.7em;
+	top: 50%;
+	transform: translateX(-50%) translateY(-50%);
+}
+
+.timer .setting-container .setting select {
+	font-size: 0.80em;
+}
+
+.timer .setting-container .setting .buttons {
+	margin-top: 0.7em;
+	display: flex;
+	gap: 0.35em;
+	justify-content: center;
+}
+
+.timer .setting-container .setting .buttons button {
+	background: #52ae93;
+	border-radius: 0.45em;
+	border: none;
+	color: inherit;
+	cursor: pointer;
+	font-size: 0.85em;
+	font-weight: 500;
+	padding: 0.5em 0.7em;
+}
+
+.timer .setting-container .setting .buttons button:disabled {
+	background: #71b19e;
+	color: #cfcfcf;
+	cursor: initial;
+}
+
+.hidden {
+	max-height: 0;
+	max-width: 0;
+	visibility: hidden;
+}

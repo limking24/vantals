@@ -1,0 +1,21 @@
+.listings {
+	display: grid;
+	font-size: clamp(14px, 2.5vw, 16px);
+	gap: 0.7em;
+	grid-template-columns: 1fr;
+}
+
+@media (min-width: 800px) {
+	.listings {
+		font-size: clamp(14px, 1.5vw, 17px);
+		gap: 0.5em;
+		grid-template-columns: 1fr 1fr;
+	}
+}
+
+@media (min-width: 1200px) {
+	.listings {
+		font-size: clamp(14px, 1vw, 20px);
+		grid-template-columns: 1fr 1fr 1fr;
+	}
+}
