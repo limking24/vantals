@@ -1,4 +1,4 @@
-import { Listing } from 'vantals-common/src/listing';
+import { Listing } from 'vantals-common/src/models/listing';
 
 export interface FilterOption {
 

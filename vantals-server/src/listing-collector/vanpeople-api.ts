@@ -1,5 +1,5 @@
 import fetch from 'node-fetch';
-import { Listing } from 'vantals-common/src/listing';
+import { Listing } from 'vantals-common/src/models/listing';
 import { FilterOption, ListingCollector } from './listing-collector';
 
 interface Response {

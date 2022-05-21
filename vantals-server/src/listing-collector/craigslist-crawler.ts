@@ -1,6 +1,6 @@
 import * as cheerio from 'cheerio';
 import fetch from 'node-fetch';
-import { Listing } from 'vantals-common/src/listing';
+import { Listing } from 'vantals-common/src/models/listing';
 import { flatten } from '../functional/array';
 import { FilterOption, ListingCollector, OnMultiFetch } from './listing-collector';
 
