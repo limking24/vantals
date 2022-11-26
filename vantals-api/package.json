@@ -1,0 +1,16 @@
+{
+  "name": "vantals-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vercel dev"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@vercel/node": "^2.6.4",
+    "typescript": "^4.9.3"
+  }
+}
