@@ -132,10 +132,10 @@ class Timer extends React.Component<Props, State> {
 				</div>
 
 				{/* Icons */}
-				<img src="start.svg" alt="Start" onClick={this.start.bind(this)} className={this.props.paused ? '' : 'hidden'}/>
-				<img src="pause.svg" alt="Pause" onClick={this.pause.bind(this)} className={this.props.paused ? 'hidden' : ''}/>
-				<img src="refresh.svg" alt="Refresh" className="smaller" onClick={this.refresh.bind(this)}/>
-				<img src="setting.svg" alt="Setting" onClick={this.showSetting.bind(this)}/>
+				<img src={process.env.PUBLIC_URL + '/start.svg'} alt="Start" onClick={this.start.bind(this)} className={this.props.paused ? '' : 'hidden'}/>
+				<img src={process.env.PUBLIC_URL + '/pause.svg'} alt="Pause" onClick={this.pause.bind(this)} className={this.props.paused ? 'hidden' : ''}/>
+				<img src={process.env.PUBLIC_URL + '/refresh.svg'} alt="Refresh" className="smaller" onClick={this.refresh.bind(this)}/>
+				<img src={process.env.PUBLIC_URL + '/setting.svg'} alt="Setting" onClick={this.showSetting.bind(this)}/>
 
 				{/* Setting */}
 				<div className={`setting-container ${this.state.showSetting ? '' : 'hidden'}`}>
