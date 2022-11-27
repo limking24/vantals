@@ -1,3 +1,4 @@
+import { backOff } from 'exponential-backoff';
 import React from 'react';
 import { Listing } from 'vantals-common/src/models/listing';
 import { VantalsApi } from './api/vantals-api';
@@ -14,7 +15,7 @@ interface State {
 
 export default class App extends React.Component<{}, State> {
 
-	api = new VantalsApi('http://localhost:8000/');
+	api = new VantalsApi(process.env.REACT_APP_VANTALS_API_BASE_URL!);
 
 	state: State = {
 		timerPaused: localStorage.getItem('timer-paused') === 'true',
@@ -27,13 +28,14 @@ export default class App extends React.Component<{}, State> {
 		this.loadListings();
 	}
 
-	loadListings(): void {
-		this.api.getListings().then(listings => {
+	async loadListings(): Promise<void> {
+		await backOff(async () => {
+			let listings = await this.api.getListings();
 			this.setState({
 				loading: false,
 				listings
 			});
-		});
+		}, { numOfAttempts: 10, timeMultiple: 5});
 	}
 
 	toggleTimer(): void {
