@@ -30,7 +30,7 @@ export class CraigslistCrawler implements ListingCollector {
 							let title = resultTitle.text().trim();
 							let photo = new URL(img ? img.replace(/50x50c/, '600x450') : 'https://www.craigslist.org/images/peace.jpg');
 							let hyperlink = new URL(resultTitle.attr('href')!);
-							let time = new Date($(li).find('.result-date').attr('datetime')!);
+							let time = new Date($(li).find('.result-date').attr('datetime')! + " GMT-8");
 							let description = $(li).find('.housing').text().trim();
 							let location = $(li).find('.result-hood').text().trim().slice(1, -1);
 							let price = $(li).find('.result-price').first().text().trim().substring(1);
