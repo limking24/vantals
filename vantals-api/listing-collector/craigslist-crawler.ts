@@ -6,8 +6,8 @@ import { FilterOption, ListingCollector, OnMultiFetch } from './listing-collecto
 
 const source = 'craigslist';
 const baseUrl = 'https://vancouver.craigslist.org';
-const searchDir = baseUrl + '/search/van/';
-const houseForRentUrl = searchDir + 'apa?min_price=&max_price=1800&availabilityMode=0&sale_date=all+dates';
+const searchDir = baseUrl + '/search/';
+const houseForRentUrl = searchDir + 'apa?';
 
 const config = {
 	baseUrl,

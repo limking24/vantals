@@ -12,7 +12,7 @@ const price = '';
 const config = {
 	baseUrl,
 	infoUrl,
-	searchPage: infoUrl + 'ZFBG08.html?location=CITY01&fprice2=1800',
+	searchPage: infoUrl + 'ZFBG08.html',
 };
 
 export class VanskyCrawler implements ListingCollector {

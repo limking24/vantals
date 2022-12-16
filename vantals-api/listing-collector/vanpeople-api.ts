@@ -32,7 +32,7 @@ export class VanpeopleApi implements ListingCollector {
 	public async collect(option?: FilterOption): Promise<Listing[]> {
 		let response = await fetch(this._config.ajaxUrl, {
 			method: 'POST', 
-			body: 'sortid=42&is_see_ad=0&s_city=5&tagid=0&is_see_private_car=0&vals[price]=1,1800',
+			body: 'sortid=42&is_see_ad=0&tagid=0&is_see_private_car=0',
 			headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'}
 		});
 		let json = await response.json() as Response;
