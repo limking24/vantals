@@ -1,6 +1,6 @@
 import fetch from 'node-fetch';
 import { Listing } from 'vantals-common/src/models/listing';
-import { FilterOption, ListingCollector } from './listing-collector';
+import { FilterOption, getMaxPrice, getMinPrice, ListingCollector } from './listing-collector';
 
 interface Response {
 	data: {
@@ -32,7 +32,7 @@ export class VanpeopleApi implements ListingCollector {
 	public async collect(option?: FilterOption): Promise<Listing[]> {
 		let response = await fetch(this._config.ajaxUrl, {
 			method: 'POST', 
-			body: 'sortid=42&is_see_ad=0&tagid=0&is_see_private_car=0',
+			body: `sortid=42&is_see_ad=0&tagid=0&is_see_private_car=0&vals[price]=${getMinPrice(option)},${getMaxPrice(option)}`, //s_city=5
 			headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'}
 		});
 		let json = await response.json() as Response;

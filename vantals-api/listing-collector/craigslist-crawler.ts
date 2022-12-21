@@ -2,12 +2,12 @@ import * as cheerio from 'cheerio';
 import fetch from 'node-fetch';
 import { Listing } from 'vantals-common/src/models/listing';
 import { flatten } from '../functional/array';
-import { FilterOption, ListingCollector, OnMultiFetch } from './listing-collector';
+import { FilterOption, getMaxPrice, getMinPrice, ListingCollector, OnMultiFetch } from './listing-collector';
 
 const source = 'craigslist';
 const baseUrl = 'https://vancouver.craigslist.org';
-const searchDir = baseUrl + '/search/';
-const houseForRentUrl = searchDir + 'apa?';
+const searchDir = baseUrl + '/search/'; //van/
+const houseForRentUrl = searchDir + 'apa?availabilityMode=0&sale_date=all+dates';
 
 const config = {
 	baseUrl,
@@ -19,8 +19,9 @@ export class CraigslistCrawler implements ListingCollector {
 	public constructor(private _noOfPages = 1, private _config = config) {}
 
 	public async collect(option?: FilterOption): Promise<Listing[]> {
+		const url = config.houseForRentUrl + `&min_price=${getMinPrice(option)}&max_price=${getMaxPrice(option)}`;
 		let onFetch: OnMultiFetch = [...Array(this._noOfPages)].map((_, i) => {
-			return fetch(`${this._config.houseForRentUrl}s=${i * 120}`)
+			return fetch(`${url}&s=${i * 120}`)
 					.then(response => response.text())
 					.then(html => {
 						let $ = cheerio.load(html);
