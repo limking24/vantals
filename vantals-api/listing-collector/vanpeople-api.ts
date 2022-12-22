@@ -1,6 +1,6 @@
 import fetch from 'node-fetch';
-import { FilterOption, Listing } from 'vantals-common/src/models/listing';
-import { getMaxPrice, getMinPrice, ListingCollector } from './listing-collector';
+import { FilterOption, getMaxPrice, getMinPrice, Listing } from 'vantals-common/src/models/listing';
+import { ListingCollector } from './listing-collector';
 
 interface Response {
 	data: {

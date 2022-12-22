@@ -1,8 +1,8 @@
 import * as cheerio from 'cheerio';
 import fetch from 'node-fetch';
-import { FilterOption, Listing } from 'vantals-common/src/models/listing';
+import { FilterOption, getMaxPrice, getMinPrice, Listing } from 'vantals-common/src/models/listing';
 import { flatten } from '../functional/array';
-import { getMaxPrice, getMinPrice, ListingCollector, OnMultiFetch } from './listing-collector';
+import { ListingCollector, OnMultiFetch } from './listing-collector';
 
 const source = 'vansky';
 const baseUrl = 'https://www.vansky.com';
@@ -20,7 +20,7 @@ export class VanskyCrawler implements ListingCollector {
 	public constructor(private _noOfPages = 1, private _config = config) {}
 
 	public async collect(option?: FilterOption): Promise<Listing[]> {
-		const url = this._config.searchPage + `&fprice1=${getMinPrice(option)}&fprice2=${getMaxPrice(option)}`
+		const url = `${this._config.searchPage}&fprice1=${getMinPrice(option)}&fprice2=${getMaxPrice(option)}`
 		let onFetch: OnMultiFetch = [...Array(this._noOfPages)].map((_, i) => {
 			return fetch(url)
 					.then(response => response.text())
