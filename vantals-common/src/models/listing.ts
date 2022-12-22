@@ -8,3 +8,8 @@ export interface Listing {
 	price: string,
 	source: string
 }
+
+export interface FilterOption {
+	minPrice?: number,
+	maxPrice?: number
+}

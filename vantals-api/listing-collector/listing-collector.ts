@@ -1,9 +1,4 @@
-import { Listing } from 'vantals-common/src/models/listing';
-
-export interface FilterOption {
-	minPrice?: number,
-	maxPrice?: number
-}
+import { FilterOption, Listing } from 'vantals-common/src/models/listing';
 
 export type OnMultiFetch = Promise<Listing[]>[];
 
