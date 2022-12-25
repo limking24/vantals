@@ -14,8 +14,8 @@ export interface FilterOption {
 	maxPrice?: number
 }
 
-export function getMinPrice(filter?: FilterOption): number | '' {
-	return (filter && filter.minPrice) ? filter.minPrice : '';
+export function getMinPrice(filter?: FilterOption, _default: number | '' = ''): number | '' {
+	return (filter && filter.minPrice) ? filter.minPrice : _default;
 }
 
 export function getMaxPrice(filter?: FilterOption): number | '' {

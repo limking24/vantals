@@ -9,7 +9,7 @@ import { FilterOption } from 'vantals-common/src/models/listing';
 export default allowCors(async function handler(req, res) {
 	const { minPrice, maxPrice } = req.query;
 	const filter: FilterOption = { minPrice, maxPrice };
-	let collectors: ListingCollector[] = [new CraigslistCrawler(), new VanpeopleApi(), new VanskyCrawler()];
+	let collectors: ListingCollector[] = [new VanpeopleApi()];
 	let onFetch: OnMultiFetch = collectors.map(collector => collector.collect(filter));
 	let json = flatten(await Promise.all(onFetch))
 				.sort((a, b) => b.time.getTime() - a.time.getTime());
