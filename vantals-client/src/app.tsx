@@ -29,8 +29,12 @@ export default class App extends React.Component<{}, State> {
 	}
 
 	async loadListings(): Promise<void> {
+		const params = new URLSearchParams(document.location.search);
 		await backOff(async () => {
-			let listings = await this.api.getListings();
+			let listings = await this.api.getListings({
+				minPrice: parseInt(params.get('minPrice') || ''),
+				maxPrice: parseInt(params.get('maxPrice') || '')
+			});
 			this.setState({
 				loading: false,
 				listings
