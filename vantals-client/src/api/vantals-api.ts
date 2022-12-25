@@ -1,4 +1,4 @@
-import { Listing } from 'vantals-common/src/models/listing';
+import { FilterOption, getMaxPrice, getMinPrice, Listing } from 'vantals-common/src/models/listing';
 
 export class VantalsApi {
 
@@ -8,8 +8,8 @@ export class VantalsApi {
 		this._listingsUrl = _baseUrl + 'listings';
 	}
 
-	public async getListings(): Promise<Listing[]> {
-		let response = await fetch(this._listingsUrl);
+	public async getListings(option?: FilterOption): Promise<Listing[]> {
+		let response = await fetch(`${this._listingsUrl}?minPrice=${getMinPrice(option)}&maxPrice=${getMaxPrice(option)}`);
 		let json = await response.json();
 		let output: Listing[] = [];
 		for (let i = 0; i < json.length; i++) {

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Listing } from 'vantals-common/src//models/listing';
+import { Listing } from 'vantals-common/src/models/listing';
 import './listing-detail.css';
 
 interface Props {
