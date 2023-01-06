@@ -17,6 +17,8 @@ export default class App extends React.Component<{}, State> {
 
 	api = new VantalsApi(process.env.REACT_APP_VANTALS_API_BASE_URL!);
 
+	lastLoadTime = new Date();
+
 	state: State = {
 		timerPaused: localStorage.getItem('timer-paused') === 'true',
 		timerInterval: Number(localStorage.getItem('timer-interval')) || 1,
@@ -38,6 +40,10 @@ export default class App extends React.Component<{}, State> {
 			this.setState({
 				loading: false,
 				listings
+			}, () => {
+				let index = Math.max(listings.findIndex(l => l.time < this.lastLoadTime) - 1, 0);
+				document.getElementsByClassName('listing')[index].scrollIntoView();
+				this.lastLoadTime = new Date();
 			});
 		}, { numOfAttempts: 10, timeMultiple: 5});
 	}
