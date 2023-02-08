@@ -6,7 +6,7 @@ interface Response {
 	data: {
 		list: {
 			title: string,
-			litpic: string,
+			cover: string,
 			url: string,
 			content: string,
 			areaname: string,
@@ -38,7 +38,7 @@ export class VanpeopleApi implements ListingCollector {
 		let json = await response.json() as Response;
 		return json.data.list.map((listing, i) => ({
 			title: listing.title,
-			photo: new URL(listing.litpic),
+			photo: new URL(listing.cover == '' ? 'https://static.vancdn.com/van/public/img/nopic/nopic-small.png' : listing.cover),
 			hyperlink: new URL(baseUrl + listing.url),
 			description: listing.content,
 			location: listing.areaname,
